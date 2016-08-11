@@ -85,6 +85,7 @@ ReactComponentは`P`,`S`、StatelessComponentは`P`という型変数を受け�
 
 では実際にコンポーネントの作例を書いてみたい。
 例によってTodoアプリケーションを想定して、ごく簡単なTodoリストを描画したいとする。
+(なお、JSX記法を用いて仮想DOMを定義しているので、拡張子を*.tsxとしている)
 
 ```typescript
 import { StatelessComponent, Component } from "react";
