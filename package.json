@@ -10,6 +10,7 @@
     "publish": "$(npm bin)/hexo publish",
     "new": "$(npm bin)/hexo new",
     "new:draft": "$(npm bin)/hexo new draft",
+    "new:page": "$(npm bin)/hexo new page",
     "generate": "$(npm bin)/hexo generate",
     "deploy": "$(npm bin)/hexo deploy -g"
   },
