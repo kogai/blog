@@ -1,6 +1,6 @@
 ---
 title: {{ title }}
-id: {{ title }}
+id: {{ id }}
 date: {{ date }}
 tags:
 ---
