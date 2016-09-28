@@ -1,5 +1,5 @@
 ---
 title: {{ title }}
-id: {{ id }}
+id: {{ title }}
 tags:
 ---
