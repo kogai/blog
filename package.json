@@ -12,6 +12,7 @@
     "new:draft": "$(npm bin)/hexo new draft",
     "new:page": "$(npm bin)/hexo new page",
     "generate": "$(npm bin)/hexo generate",
+    "clean": "$(npm bin)/hexo clean",
     "deploy": "$(npm bin)/hexo deploy -g"
   },
   "dependencies": {
