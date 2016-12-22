@@ -31,7 +31,7 @@
               <% } else { %>
                 <h1><a href="<%- config.root %><%- item.path %>"><%= item.title %></a></h1>
               <% } %>
-          		<%- partial('social', { link_url: item.path }) %>
+          		<%- partial('social', { link_url: item.permalink }) %>
             <% } else { %>
                 <h1>(No title)</h1>
             <% } %>
