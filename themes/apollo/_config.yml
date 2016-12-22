@@ -2,6 +2,7 @@
 menu:
   Home: /
   Archives: /archives
+  過去に作ったもの: /list
 rss: /atom.xml
 
 # Content
