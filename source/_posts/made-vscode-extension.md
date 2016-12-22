@@ -1,5 +1,5 @@
 ---
-title: VSCodeの拡張機能を作った
+title: 正規表現をダイアグラムとして表示するVSCodeの拡張機能を作った
 id: made-vscode-extension
 tags:
   - TypeScript
@@ -8,8 +8,8 @@ date: 2016-12-22 19:31:47
 ---
 
 
-半年くらい前から作業用のエディタをAtomからVSCodeに切り替えた。
-TypeScriptに最適化されていてとても快適なのだが、Atomで常用していたあるプラグインの代替となる拡張機能が無かった。
+半年くらい前に作業用のエディタをAtomからVSCodeに切り替えた。
+TypeScriptに最適化されていてとても快適なんだけど、Atomで常用していたあるプラグインの代替となる拡張機能が無かった。
 
 [atom-regex-railroad-diagrams](https://github.com/klorenz/atom-regex-railroad-diagrams)というプラグインで、正規表現をダイアグラムとして表示してくれるというもの。
 かなしいことに私は正規表現が苦手で、書いたパターンが実際にどんな文字列にマッチするのかイマイチイメージできないのだが、このプラグインを使うと視覚的にわかりやすい形で書いたパターンを確認できていた。
@@ -25,9 +25,32 @@ VSCodeに移行してからも、正規表現を書くときだけAtomを起動�
 あと、Atomでは正規表現部分を囲むCSSクラスがあるので正規表現を表す文字列を簡単に取得できていたのだが、VSCodeではそういう風にはなっていなかったので、正規表現部分を抽出するコードを書く必要があった。
 
 Atomだとこういう感じ
-![Atomだとこういう感じ](/images/made-vscode-extension/atom-regex.png)
+
+```html
+<span class="string regexp js">
+  <span class="punctuation definition string begin js">/</span>
+  foo
+  <span class="punctuation definition string end js">/</span>
+</span>
+```
 
 VSCodeだとこういう感じ
-![VSCodeだとこういう感じ](/images/made-vscode-extension/vscode-regex.png)
+
+```html
+<span>
+  <span class="token meta var expr js string regex punctuation definition begin">/</span>
+  <span class="token meta var expr js string regex">foo</span>
+  <span class="token meta var expr js string regex punctuation definition end">/</span>
+</span>
+```
+
+動かしてみたところはこんな感じ。
+
+Cmd + Shift + P から `Show RegExp preview`コマンドを打つ
+![](/images/made-vscode-extension/command.png)
+
+こんな感じでダイアグラムが表示される
+![](/images/made-vscode-extension/diagram.png)
+
 
 よかったら使ってみて下さい。
