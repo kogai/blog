@@ -25,16 +25,19 @@ RxJSのmarbleを使ってテストしてるのでちょっと論旨がズレそ�
 import { deepStrictEqual } from "assert";
 import { TestScheduler } from "rxjs/testing/TestScheduler";
 import { Observable } from "rxjs/Observable";
-
 import "./";
-import { createTestScheduler, TestSchedulers, createColdObservable } from "./test-helpers";
-
+import {
+  createTestScheduler,
+  TestSchedulers,
+  createColdObservable
+} from "./test-helpers";
+  
 describe("ofTypeObservable", () => {
   let action$: Observable<any>;
   let testSchedulers: TestSchedulers;
   let testScheduler: TestScheduler;
   let cold: createColdObservable;
-
+  
   beforeEach(() => {
     // createTestSchedulerの中でassertionをしている
     testSchedulers = createTestScheduler();
@@ -46,13 +49,13 @@ describe("ofTypeObservable", () => {
       c: { type: "buzz", payload: "buzzPayload" },
     });
   });
-
+  
   it("should filtering specific type", () => {
     const expect$ = action$.ofType("bar");
     testScheduler.expectObservable(expect$).toBe("-a", { a: "barPayload" });
     testScheduler.flush();
   });
-
+  
   it("can pick by own payload", () => {
     action$ = cold("ab", {
       a: { type: "foo", payload: "fooPayload" },
@@ -72,10 +75,10 @@ import * as test from "tape";
 import { deepStrictEqual } from "assert";
 import { TestScheduler } from "rxjs/testing/TestScheduler";
 import { Observable } from "rxjs/Observable";
-
+  
 import "./";
 import { createTestScheduler, TestSchedulers, createColdObservable } from "./test-helpers";
-
+  
 const setup = (assert: test.Test) => {
   // createTestSchedulerの中でassertionをしているので、tapeの提供しているassertオブジェクトを渡してる
   const testSchedulers = createTestScheduler(assert);
@@ -90,7 +93,7 @@ const setup = (assert: test.Test) => {
     testSchedulers, testScheduler, cold, action$,
   }
 }
-
+  
 test("should filtering specific type", assert => {
   const {action$, testScheduler} = setup(assert)
   const expect$ = action$.ofType("bar");
@@ -98,7 +101,7 @@ test("should filtering specific type", assert => {
   testScheduler.flush();
   assert.end()
 })
-
+  
 test("can pick by own payload", assert => {
   const {cold, testScheduler} = setup(assert)
   const action$ = cold("ab", {

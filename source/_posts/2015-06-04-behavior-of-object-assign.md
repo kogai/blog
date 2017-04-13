@@ -33,22 +33,22 @@ MDNに記載されているリファレンスにも
 コードで表すと
 ```javascript
 "use strict";
-
+  
 var objectAssign = require('object-assign');
-
+  
 var obj = {
   foo: "bar"
 };
-
+  
 var obj2 = {
   baz: "foobar"
 };
-
+  
 console.log(obj); // { foo: 'bar' }
 console.log(obj2); // { baz: 'foobar' }
-
+  
 var obj3 = objectAssign(obj, obj2);
-
+  
 console.log(obj3); // { foo: 'bar', baz: 'foobar' }
 console.log(obj); // { foo: 'bar', baz: 'foobar' } objの中身も変わっている
 ```
@@ -58,7 +58,7 @@ console.log(obj); // { foo: 'bar', baz: 'foobar' } objの中身も変わって�
 ```javascript
 var target = {};
 var obj4 = objectAssign(target, obj, obj2);
-
+  
 console.log(obj4); // { foo: 'bar', baz: 'foobar' }
 console.log(obj); // { foo: 'bar' } objの中身は変わっていない
 ```

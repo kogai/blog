@@ -25,7 +25,7 @@ Reduxっぽく、単一のdispatcher関数に、ユーザの関心事の種類�
 ```javascript
 const subject = new Subject<any>();
 const action$ = subject.asObservable();
-
+  
 action$ // subject由来のストリーム
   .filter(action => action.type === "SOME_ACTION_TYPE");
 ```

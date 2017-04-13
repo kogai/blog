@@ -55,7 +55,7 @@ class Component<P, S> implements ComponentLifecycle<P, S> {
   setState(state: S, callback?: () => any): void;
   forceUpdate(callBack?: () => any): void;
   render(): ReactElement<any>;
-
+  
   props: P & { children?: ReactNode };
   state: S;
   context: {};
@@ -63,7 +63,7 @@ class Component<P, S> implements ComponentLifecycle<P, S> {
     [key: string]: ReactInstance
   };
 }
-
+  
 // StatelessComponent
 interface StatelessComponent<P> {
   (props?: P, context?: any): ReactElement<any>;
@@ -89,28 +89,28 @@ ReactComponentは`P`,`S`、StatelessComponentは`P`という型変数を受け�
 
 ```typescript
 import { StatelessComponent, Component } from "react";
-
+  
 // Propsの型を定義する
 interface ITodo {
   label: string;
   isCompleted: boolean;
 }
-
+  
 interface ITodos {
   todos: ITodo[];
 }
-
+  
 // StatelessComponentの型引数に上で定義した型を渡す
 const Todo: StatelessComponent<ITodos> = ({ label, isCompleted }) => (
   <li className={ isCompleted ? "Todo--is-complete" : "Todo" }>{ label }</li>
 );
-
+  
 const Todos: StatelessComponent<ITodoProps> = ({ todos }) => (
   <ul>
     {todos.map(todo => <Todo { ...todo }/>)}
   </ul>
 );
-
+  
 // ReactComponentとして定義するなら...
 class Todo extends Component<ITodos, void> {
   render() {
@@ -118,7 +118,7 @@ class Todo extends Component<ITodos, void> {
     return <li className={ isCompleted ? "Todo--is-complete" : "Todo" }>{ label }</li>
   }
 }
-
+  
 class Todos extends Component<ITodos, void> {
   render() {
     const { todos } = this.props;
@@ -142,7 +142,7 @@ export class RootComponent extends Component<void, ITodos> {
   componentWillMount() {
     rootModel.subscribe(state => this.setState(state));
   }
-
+  
   render() {
     return <Todos { ...this.state } />;
   }

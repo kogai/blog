@@ -6,14 +6,14 @@
     "version": "3.2.2"
   },
   "scripts": {
-    "start": "$(npm bin)/hexo server",
-    "publish": "$(npm bin)/hexo publish",
-    "new": "$(npm bin)/hexo new",
-    "new:draft": "$(npm bin)/hexo new draft",
-    "new:page": "$(npm bin)/hexo new page",
-    "generate": "$(npm bin)/hexo generate",
-    "clean": "$(npm bin)/hexo clean",
-    "deploy": "$(npm bin)/hexo deploy -g"
+    "start": "hexo server",
+    "publish": "hexo publish",
+    "new": "hexo new",
+    "new:draft": "hexo new draft",
+    "new:page": "hexo new page",
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy -g"
   },
   "dependencies": {
     "hexo": "^3.2.0",
