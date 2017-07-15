@@ -7,6 +7,16 @@ date: 2016-12-22 19:39:42
 
 ------
 
+### trs
+
+Google Translate APIのCLIツール
+[trs](https://github.com/kogai/trs)
+
+### sync-memo
+
+Gistをストレージに使ったテキスト保存ツール
+[sync-memo](https://github.com/kogai/sync-memo)
+
 ### Regex Railroad Diagrams
 
 VSCode用拡張機能で、正規表現をダイアグラムとして表示する。
@@ -30,4 +40,4 @@ Slackに自分のステータスを表すコメントを投稿できるツール
 ### sisho
 
 指定したレポジトリに含まれるコードファイルをまとめてepub化するCLIツール。Go製。gophergalaというハッカソンで作った。
-(sisho)[https://github.com/gophergala2016/sisho]
+[sisho](https://github.com/gophergala2016/sisho)
