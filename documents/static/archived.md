@@ -67,7 +67,7 @@ RxJS 5.x~に Redux の ActionType でフィルタリングできるオペレー�
 Slack に自分のステータスを表すコメントを投稿できるツールバー常駐アプリ。Electron 製。
 [arisama](https://github.com/kogai/arisama/releases)
 
-### goliip
+### golip
 
 予め用意しておいたテンプレートをクリップボードにコピーできる CLI ツール。Go 製。
 [golip](https://github.com/kogai/golip)

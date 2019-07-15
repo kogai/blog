@@ -9,9 +9,10 @@
     "start": "docker run -it --publish 8080:80 kogai/blog",
     "docker:sh": "docker run -it kogai/blog ash",
     "build:image": "docker build -t kogai/blog --no-cache .",
-    "build:blog": "npm run clean && npm run build && node dist/render.js",
-    "build": "tsc",
-    "clean": "rm -f public/*",
+    "build:blog": "node dist/render.js",
+    "build:copy": "cp -r documents/asset/ public",
+    "build": "npm run build:copy && npm run build:blog && npm run build:image",
+    "clean": "rm -rf public/*",
     "publish": "",
     "deploy": ""
   },
