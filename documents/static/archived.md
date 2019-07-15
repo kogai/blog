@@ -7,6 +7,41 @@ date: 2016-12-22 19:39:42
 
 ---
 
+### wasvm
+
+WebAssembly のインタプリタ。マイコンでも走る(リソースがリッチな機種は...)
+
+[wasvm](https://github.com/kogai/wasvm)
+
+### github-geppou
+
+社内向けに月報を作成する時の雛形生成スクリプト。
+
+[github-geppou](https://github.com/kogai/github-geppou)
+
+### dog-bot
+
+LINE ボット。読み込ませた対応表に応じて返答する。
+
+[dog-bot](https://github.com/kogai/dog-bot)
+
+### typed_i18n
+
+i18n の辞書ファイルから正しい TFunction の呼び出しを網羅した型定義を生成する。
+
+[typed_i18n](https://github.com/kogai/typed_i18n)
+
+### monkey-ocaml
+
+型システム入門の型付きラムダ計算実装。moneky とはほぼ無関係。
+
+[monkey-ocaml](https://github.com/kogai/monkey-ocaml)
+
+### monkey
+
+Writing interpreter in Go の Rust 版
+[monkey](https://github.com/kogai/monkey)
+
 ### trs
 
 Google Translate API の CLI ツール

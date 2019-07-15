@@ -7,6 +7,7 @@ import { parse } from "yaml";
 import { Post, Content } from "./themes/post";
 import { Static } from "./themes/static";
 import { Layout } from "./themes/layout";
+import { Index } from "./themes/index";
 
 const { readFile, writeFile, readdir } = promises;
 const md = new Markdown();
@@ -15,7 +16,7 @@ const output = resolve(__dirname, "..", "public");
 const render = (
   inputPath: string,
   Component: React.FC<Content>
-): Promise<void> =>
+): Promise<({ title: string; date?: string; filename: string })[]> =>
   readdir(inputPath)
     .then(contents =>
       Promise.all(
@@ -29,19 +30,28 @@ const render = (
                 .map(text => text.trim())
                 .filter(text => text !== "");
               const content = contents.join("\n---\n");
+              const { id, title, date, ...postMeta } = parse(meta);
 
-              const { id, ...postMeta } = parse(meta);
               const html = renderToString(
-                <Layout title={postMeta.title}>
+                <Layout title={title}>
                   <Component
                     {...postMeta}
+                    title={title}
+                    date={date}
                     id={id ? id : contentFilename}
                     body={md.render(content)}
                   />
                 </Layout>
               );
-              const file = resolve(output, `${basename(contentFilename)}.html`);
-              return writeFile(file, html);
+
+              const htmlFilename = `${basename(contentFilename, ".md")}.html`;
+              const file = resolve(output, htmlFilename);
+
+              return writeFile(file, html).then(() => ({
+                filename: htmlFilename,
+                title,
+                date
+              }));
             })
             .catch(err => {
               console.log(contentFilename);
@@ -50,9 +60,29 @@ const render = (
         )
       )
     )
-    .then(() => {
+    .then(results => {
       console.log(`${inputPath} generated.`);
+      return results.filter(
+        (x): x is { title: string; date: string; filename: string } => !!x
+      );
     });
 
-render(resolve(__dirname, "..", "documents", "post"), Post);
-render(resolve(__dirname, "..", "documents", "static"), Static);
+const postRoot = resolve(__dirname, "..", "documents", "post");
+const staticRoot = resolve(__dirname, "..", "documents", "static");
+
+Promise.all([render(postRoot, Post), render(staticRoot, Static)]).then(
+  ([posts, statics]) => {
+    const html = renderToString(
+      <Layout title="dev log">
+        <Index
+          posts={posts.map(({ date, ...post }) => ({
+            date: date ? date : "",
+            ...post
+          }))}
+          statics={statics}
+        />
+      </Layout>
+    );
+    return writeFile(resolve(output, "index.html"), html);
+  }
+);
