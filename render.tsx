@@ -1,34 +1,58 @@
 import React from "react";
-import { resolve } from "path";
-import { createWriteStream, createReadStream, readFileSync } from "fs";
+import { resolve, basename } from "path";
+import { promises } from "fs";
 import { renderToNodeStream, renderToString } from "react-dom/server";
 import Markdown from "markdown-it";
 import { parse } from "yaml";
-import { Post } from "./themes/root";
+import { Post, Content } from "./themes/post";
+import { Static } from "./themes/static";
+import { Layout } from "./themes/layout";
 
+const { readFile, writeFile, readdir } = promises;
 const md = new Markdown();
-const input = resolve(__dirname, "..", "documents", "post");
-const [meta, content] = readFileSync(
-  resolve(input, "writing-interpreter-in-rust.md"),
-  {
-    encoding: "utf8"
-  }
-)
-  .split("---")
-  .map(text => text.trim())
-  .filter(text => text !== "");
+const output = resolve(__dirname, "..", "public");
 
-const postMeta = parse(meta);
+const render = (
+  inputPath: string,
+  Component: React.FC<Content>
+): Promise<void> =>
+  readdir(inputPath)
+    .then(contents =>
+      Promise.all(
+        contents.map(contentFilename =>
+          readFile(resolve(inputPath, contentFilename), {
+            encoding: "utf8"
+          })
+            .then(raw => {
+              const [meta, ...contents] = raw
+                .split("---")
+                .map(text => text.trim())
+                .filter(text => text !== "");
+              const content = contents.join("\n---\n");
 
-const html = renderToString(
-  <html>
-    <head>
-      <title>{postMeta.title}</title>
-    </head>
-    <body>
-      <Post {...postMeta} body={md.render(content)} />
-    </body>
-  </html>
-);
+              const { id, ...postMeta } = parse(meta);
+              const html = renderToString(
+                <Layout title={postMeta.title}>
+                  <Component
+                    {...postMeta}
+                    id={id ? id : contentFilename}
+                    body={md.render(content)}
+                  />
+                </Layout>
+              );
+              const file = resolve(output, `${basename(contentFilename)}.html`);
+              return writeFile(file, html);
+            })
+            .catch(err => {
+              console.log(contentFilename);
+              console.error(err);
+            })
+        )
+      )
+    )
+    .then(() => {
+      console.log(`${inputPath} generated.`);
+    });
 
-console.log(html);
+render(resolve(__dirname, "..", "documents", "post"), Post);
+render(resolve(__dirname, "..", "documents", "static"), Static);

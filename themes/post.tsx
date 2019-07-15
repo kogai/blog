@@ -1,6 +1,6 @@
 import React from "react";
 
-type Content = {
+export type Content = {
   title: string;
   id: string;
   date: string;
@@ -8,13 +8,8 @@ type Content = {
   body: string;
 };
 
-type Props = {
-  posts: Content[];
-  statics: Content[];
-};
-
 export const Post: React.FC<Content> = ({ title, id, date, tags, body }) => (
-  <div>
+  <section>
     <h1>{title}</h1>
     <span>{date}</span>
     <ul>
@@ -23,6 +18,6 @@ export const Post: React.FC<Content> = ({ title, id, date, tags, body }) => (
       ))}
     </ul>
     <hr />
-    <section dangerouslySetInnerHTML={{ __html: body }}></section>
-  </div>
+    <article dangerouslySetInnerHTML={{ __html: body }} />
+  </section>
 );
