@@ -7,10 +7,12 @@ tags:
 ---
 
 ## やりたいこと
+
 - クライアント案件で、本番サーバーへのアクセス権がない。
 - 更新作業の際には差分ファイルのみを納品するように要求されている。
 
 ## git archiveで差分抽出
+
 `git archive`コマンドで、前回納品時との`diff`を抽出して`zip`化する
 
 ```shell
@@ -21,6 +23,7 @@ git archive --format=zip HEAD `git diff master --name-only` -o archive.zip
 これでアーカイブ化できました。
 
 ## --diff-filterを使う
+
 上記の手法だと差分の中に削除したファイルも含まれてしまい、以下のエラーメッセージが出ます。
 
 ```shell

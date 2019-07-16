@@ -9,7 +9,8 @@ tags:
 
 ---
 
-##前置き
+## 前置き
+
 1年ほど前に、政府がGoogle Mapsを使わないように要請したという事が話題になりました。
 [ハフィントン・ポスト「グーグルマップの「利用禁止令」 竹島や北方領土が「日本名でない表記」 政府が自治体などに要請」](http://www.huffingtonpost.jp/2013/09/29/google-map-forbidden_n_4011180.html)
 
@@ -22,7 +23,7 @@ tags:
 
 ------
 
-##手順
+## 手順
 
 1. OpenLayersライブラリを読み込む
 2. 「DenshiKokudo Web API for OpenLayers」を読み込む
@@ -31,7 +32,7 @@ tags:
 
 ------
 
-##コード
+## コード
 
 ```html
 <script type="text/javascript" src="http://portal.cyberjapan.jp/sys/OpenLayers-2.11/OpenLayers.js" charset="UTF-8"></script>

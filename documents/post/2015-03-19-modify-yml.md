@@ -11,7 +11,8 @@ tags:
 `nodejs`の`v0.12`を使ってるプロジェクトでcircleCIのテストが通りませんでした。
 手元のテストは成功しているのですが。。。
 
-####こんな感じのエラー
+#### こんな感じのエラー
+
 ```sh
    Uncaught Error: Module did not self-register.
       at Error (native)
@@ -22,6 +23,7 @@ tags:
 ```
 
 #### 困ったときのStackOverflow
+
 [Uncaught Error: Module did not self-register](http://stackoverflow.com/questions/28486891/uncaught-error-module-did-not-self-register)
 
 事前に

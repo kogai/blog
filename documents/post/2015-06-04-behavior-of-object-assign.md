@@ -12,7 +12,7 @@ tags:
 
 仕様をきちんと理解していれば自明のことですが、ハマりかけたのでメモしておきます。
 
-##この記事の概要
+## この記事の概要
 複数のオブジェクトを合成して新しいオブジェクトを返してくれる便利機能`Object.assign`。
 現在は`harmony`オプション付きのNode.jsでも使えないので、`object-assign`などのモジュールを経由して使っていると思います。
 
@@ -33,22 +33,22 @@ MDNに記載されているリファレンスにも
 コードで表すと
 ```javascript
 "use strict";
-  
+
 var objectAssign = require('object-assign');
-  
+
 var obj = {
   foo: "bar"
 };
-  
+
 var obj2 = {
   baz: "foobar"
 };
-  
+
 console.log(obj); // { foo: 'bar' }
 console.log(obj2); // { baz: 'foobar' }
-  
+
 var obj3 = objectAssign(obj, obj2);
-  
+
 console.log(obj3); // { foo: 'bar', baz: 'foobar' }
 console.log(obj); // { foo: 'bar', baz: 'foobar' } objの中身も変わっている
 ```
@@ -58,7 +58,7 @@ console.log(obj); // { foo: 'bar', baz: 'foobar' } objの中身も変わって�
 ```javascript
 var target = {};
 var obj4 = objectAssign(target, obj, obj2);
-  
+
 console.log(obj4); // { foo: 'bar', baz: 'foobar' }
 console.log(obj); // { foo: 'bar' } objの中身は変わっていない
 ```

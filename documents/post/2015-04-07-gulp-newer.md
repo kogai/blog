@@ -12,7 +12,7 @@ tags:
   - node.js
 ---
 
-###更新したファイルだけをタスクの対象に
+### 更新したファイルだけをタスクの対象に
 
 gulpでファイルの自動生成をする時、対象ファイルの数が増えてくると生成に時間がかかってツラい感じになってきます。
 `gulp-newer`を使えば更新した差分ファイルのみをタスクの対象にしてくれるので幸せな感じになれます。
@@ -38,7 +38,8 @@ gulp.task 'default', [
 ]
 ```
 
-###本番環境用ファイルを生成する時
+### 本番環境用ファイルを生成する時
+
 本番環境用のファイルを作る時は、生成漏れがあったら困るので更新差分にはしたくありません。
 そこで`production`環境の変数を作ってあげて、更新差分の基準ファイルを振り分けするようにしました。
 
@@ -74,10 +75,12 @@ gulp.task 'build', [
 
 ```
 
-###まとめ
+### まとめ
+
 静的サイトのジェネレータとしてgulpを使う事が多いので、100枚以上あるhtmlファイルの生成とか画像ファイルの生成にかかる時間が劇的に減りました。
 ※ちなみに、gruntにも同様のプラグイン(grunt-newer)があります。
 
-参考
+#### 参考
+
 [gulp-newer](https://www.npmjs.com/package/gulp-newer)
 [How to handle development and production assets with gulp?](http://laravel.io/forum/04-03-2014-how-to-handle-development-and-production-assets-with-gulp)

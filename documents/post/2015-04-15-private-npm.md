@@ -12,7 +12,7 @@ tags:
 [private-modules](https://www.npmjs.com/private-modules)
 ![](https://www.evernote.com/shard/s168/sh/241a329b-f2a3-4a33-ad08-4b7fc59d573c/6ec829c5154bd20530db0c9b20b7fffc/deep/0/npm.png)
 
-##機能
+## 機能
 
 >- create and share unlimited private modules for $7/month
 >- Host as many private packages as you want
@@ -32,7 +32,7 @@ tags:
 企業(組織)アカウント向けの対応はこれからのようです。
 
 
-##導入の仕方
+## 導入の仕方
 
 1. [npmjs](https://www.npmjs.com)にサインアップして課金しておきます。
 ※クレジットカード払いのみのようです。
