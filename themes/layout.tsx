@@ -1,9 +1,11 @@
 import React from "react";
 
-export const Layout: React.FC<{ children: React.ReactNode; title: string }> = ({
-  children,
-  title
-}) => (
+type Props = {
+  children: React.ReactNode;
+  title: string;
+  postTitle?: string;
+};
+export const Layout: React.FC<Props> = ({ children, title, postTitle }) => (
   <html>
     <head>
       <meta charSet="utf-8" />
@@ -11,8 +13,16 @@ export const Layout: React.FC<{ children: React.ReactNode; title: string }> = ({
         content="width=device-width,initial-scale=1,shrink-to-fit=no"
         name="viewport"
       />
-      <title>{title}</title>
+      <link rel="stylesheet" href="/style.css" />
+      <title>{postTitle ? `${postTitle} | ${title}` : title}</title>
     </head>
-    <body>{children}</body>
+    <body>
+      <header>
+        <h1>
+          <a href="/">{title}</a>
+        </h1>
+      </header>
+      {children}
+    </body>
   </html>
 );

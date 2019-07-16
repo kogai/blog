@@ -12,6 +12,7 @@ import { Index } from "./themes/index";
 const { readFile, writeFile, readdir } = promises;
 const md = new Markdown();
 const output = resolve(__dirname, "..", "public");
+const blogTitle = "kogai.devlog";
 
 const render = (
   inputPath: string,
@@ -33,7 +34,7 @@ const render = (
               const { id, title, date, ...postMeta } = parse(meta);
 
               const html = renderToString(
-                <Layout title={title}>
+                <Layout title={blogTitle} postTitle={title}>
                   <Component
                     {...postMeta}
                     title={title}
@@ -73,7 +74,7 @@ const staticRoot = resolve(__dirname, "..", "documents", "static");
 Promise.all([render(postRoot, Post), render(staticRoot, Static)]).then(
   ([posts, statics]) => {
     const html = renderToString(
-      <Layout title="dev log">
+      <Layout title={blogTitle}>
         <Index
           posts={posts.map(({ date, ...post }) => ({
             date: date ? date : "",

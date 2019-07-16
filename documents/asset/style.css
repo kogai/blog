@@ -1,0 +1,37 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+
+header {
+  margin-bottom: 1rem;
+}
+
+body {
+  padding: 1rem;
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, Hiragino Kaku Gothic ProN, "メイリオ", meiryo, sans-serif;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0 0 0 1rem;
+}
+
+li {
+  list-style-type: none;
+  margin-bottom: 0.5rem;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+article {
+  margin-bottom: 2rem;
+}
